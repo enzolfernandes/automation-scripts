@@ -1,0 +1,127 @@
+{
+  "schema_version": 7,
+  "application": {
+    "name": "AMT205 Thermal Validator",
+    "version": "0.9.3"
+  },
+  "equipment": {
+    "model": "Vebko AMT205 V8",
+    "firmware": "25.08.18-Stable",
+    "supply": "220 Vac",
+    "grounding": "OK",
+    "protections": "All enabled"
+  },
+  "environment": {
+    "target_c": 23.0,
+    "tolerance_c": 2.0
+  },
+  "test_scope": {
+    "required_fan_mode": "SESSION",
+    "historical_reference_fan_mode": "MAX",
+    "injection_frequency_hz": 50.0,
+    "historical_reference_condition": "AC injection at 50 Hz with Fan Mode (Max Power)"
+  },
+  "initial_temperature_c": {
+    "normal": 33.0,
+    "max": 25.0,
+    "tolerance": 1.0,
+    "control": "maximum_of_8_vi_sensors"
+  },
+  "initial_baseline": {
+    "enabled": true,
+    "use_fan_mode_target": true,
+    "minimum_c": 24.0,
+    "maximum_c": 34.0,
+    "minimum_observation_s": 120.0,
+    "maximum_range_c": 1.0,
+    "maximum_abs_slope_c_per_min": 0.2,
+    "maximum_sample_gap_s": 5.0,
+    "estimator": "median",
+    "status": "approved_operational_2026-09-01",
+    "evidence": "Internal decision: 25 °C Max Power and 33 °C Normal, ±1 °C for 120 s"
+  },
+  "stability": {
+    "window_s": 120.0,
+    "window_approved": true,
+    "diagnostic_windows_s": [
+      30.0,
+      60.0,
+      120.0
+    ],
+    "maximum_range_c": 1.0,
+    "maximum_abs_slope_c_per_min": 0.2,
+    "maximum_range_status": "approved_internal",
+    "status": "approved_internal_2026-08-27"
+  },
+  "fan_mode": {
+    "max_power_historical_time_multiplier": 1.0
+  },
+  "workflow": {
+    "post_test_evidence_s": 10.0,
+    "auto_finalize_recording": true
+  },
+  "thermal_recovery": {
+    "enabled": true,
+    "use_initial_targets": true,
+    "hold_s": 120.0,
+    "maximum_duration_s": 1800.0,
+    "maximum_sample_gap_s": 5.0,
+    "status": "operational_documentation"
+  },
+  "profiles": {
+    "current_25": {
+      "label": "Current – 1×128 A / 60 A / Power Control 25%",
+      "criterion": "stable_temperature",
+      "approved_max_c": 52.0,
+      "investigate_max_c": 55.0,
+      "maximum_duration_s": 1800.0
+    },
+    "current_50": {
+      "label": "Current – 1×128 A / 60 A / Power Control 50%",
+      "criterion": "historical_time",
+      "historical_time_s": 179.4,
+      "recommended_duration_s": 185.0
+    },
+    "current_75": {
+      "label": "Current – 1×128 A / 60 A / Power Control 75%",
+      "criterion": "historical_time",
+      "historical_time_s": 89.93,
+      "recommended_duration_s": 95.0
+    },
+    "current_100": {
+      "label": "Current – 1×128 A / 60 A / Power Control 100%",
+      "criterion": "historical_time",
+      "historical_time_s": 57.49,
+      "recommended_duration_s": 65.0
+    },
+    "voltage_300": {
+      "label": "Voltage – 6×300 V",
+      "criterion": "reach_stability",
+      "historical_reported_v": 299.3,
+      "maximum_duration_s": 1800.0
+    },
+    "custom": {
+      "label": "Free Profile",
+      "criterion": "monitor_only",
+      "signal_type": "Other",
+      "historical_time_s": null,
+      "approved_max_c": null,
+      "investigate_max_c": null,
+      "maximum_duration_s": 1800.0
+    }
+  },
+  "event_rules": {
+    "thermal_error_always_stops_timer": true,
+    "status_14_is_historical_stress_endpoint": true,
+    "cooling_stops_timer_if_output_reduced": true,
+    "smart_delay_stops_timer_if_output_reduced": true
+  },
+  "repetitions": {
+    "required": 2,
+    "third_if_difference_percent_above": 10.0
+  },
+  "optional": {
+    "compare_setpoint_internal_feedback": true,
+    "reviewer_signature": true
+  }
+}

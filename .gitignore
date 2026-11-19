@@ -1,0 +1,13 @@
+# NetDiag — diagnostic output folders (generated at runtime)
+NetDiag/Diagnostic_*/
+
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+bulkWordCreator/OUTPUT/
+RT430 PTP Active Probe/validation/
+RT430 PTP Active Probe/releases/
+bulkWordCreator/OS_Database.xlsx
+bulkWordCreator/OS_Modelo.docx

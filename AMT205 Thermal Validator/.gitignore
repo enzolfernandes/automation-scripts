@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+sessions/
+output/
+*.log
+.idea/
+.vscode/
+runtime.local.json
+config/user.json
+config/user.json.tmp

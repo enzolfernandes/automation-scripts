@@ -1,0 +1,17 @@
+[project]
+name = "amt205-thermal-validator"
+version = "0.9.3"
+description = "Passive monitor and thermal test validator for the Vebko AMT205 V8"
+requires-python = ">=3.11"
+dependencies = ["XlsxWriter>=3.2"]
+
+[project.scripts]
+amt205-thermal-validator = "amt205_validator.app:main"
+amt205-thermal-cli = "amt205_validator.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["amt205_validator*"]
